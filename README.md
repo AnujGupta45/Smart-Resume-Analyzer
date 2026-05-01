@@ -1,113 +1,107 @@
-# Smart Resume Analyzer
+# 🚀 Smart Resume Analyzer
 
-An AI-powered full-stack web app that analyzes your resume PDF and gives you:
-- **ATS Score** (out of 100)
-- **Keyword matching** vs job description
-- **Section-wise feedback** (Skills, Experience, Education, Projects, Summary)
-- **Actionable suggestions** to improve your resume
-- **Downloadable PDF report**
+**Smart Resume Analyzer** is a high-performance, AI-powered SaaS dashboard designed to help job seekers optimize their resumes for modern Applicant Tracking Systems (ATS). Using advanced Natural Language Processing (NLP), the app provides real-time scoring, keyword gap analysis, and actionable feedback.
+
+**Live Demo:** [smart-resume-analyzer-black.vercel.app](https://smart-resume-analyzer-black.vercel.app)
 
 ---
 
-## Tech Stack
+## ✨ Key Features
 
-| Layer | Technology |
-|-------|-----------|
-| Frontend | React 18 + Vite |
-| Styling | Vanilla CSS (dark glassmorphism) |
-| Backend | Python Flask |
-| PDF Parsing | PyPDF2 |
-| NLP | NLTK (tokenization, stopwords, FreqDist) |
-| Report | ReportLab |
+- **🎯 Intelligent ATS Scoring:** Proprietary scoring algorithm (50/25/25 weight) analyzing keyword density, section completeness, and formatting.
+- **🔍 Bigram Phrase Matching:** Detects complex industry terms like "Full Stack Developer" or "Project Management" instead of just single words.
+- **📜 Analysis History:** Automatically persists your past scans in the browser so you can track your resume's improvement over time.
+- **📄 Professional PDF Reports:** Generate and download a sleek, black-and-white professional report of your analysis.
+- **🌑 Modern SaaS UI:** A high-contrast, minimalist dashboard built with a premium Zinc/Slate aesthetic.
+- **👤 Developer Profile:** Integrated "About Me" section featuring the project creator's portfolio and contact info.
 
 ---
 
-## Project Structure
+## 🛠️ Tech Stack
+
+### Frontend
+- **Framework:** React 18 + Vite
+- **Styling:** Modern Vanilla CSS (SaaS Design System)
+- **Routing:** React Router v6
+- **Icons/UI:** Custom SVG components & Inter Typography
+
+### Backend
+- **Engine:** Python Flask
+- **NLP Library:** NLTK (Natural Language Toolkit)
+- **PDF Engine:** PyPDF2
+- **Report Generation:** ReportLab (PDF processing)
+- **Deployment:** Render (API) & Vercel (Frontend)
+
+---
+
+## 📂 Project Structure
 
 ```
 Smart Resume Analyzer/
 ├── backend/
-│   ├── app.py                    # Flask server
-│   ├── requirements.txt
+│   ├── app.py                    # Flask server entry
+│   ├── requirements.txt          # Python dependencies
 │   └── services/
-│       ├── pdf_parser.py         # PDF text extraction
-│       ├── nlp_engine.py         # NLP: tokenize, keywords, sections
-│       ├── scorer.py             # ATS scoring logic
-│       └── report_generator.py  # PDF report via ReportLab
+│       ├── pdf_parser.py         # PDF text extraction logic
+│       ├── nlp_engine.py         # NLP: Tokenization, Bigrams, Section Detection
+│       ├── scorer.py             # ATS Scoring & Weights
+│       └── report_generator.py   # PDF PDF Generation
 │
 └── frontend/
-    ├── index.html
-    ├── package.json
+    ├── vercel.json               # Vercel routing configuration
     └── src/
-        ├── App.jsx
-        ├── main.jsx
-        ├── index.css             # Global design system
-        ├── components/
-        │   ├── Navbar.jsx/css
-        │   ├── UploadZone.jsx/css
-        │   ├── AtsScore.jsx/css
-        │   ├── KeywordCloud.jsx/css
-        │   ├── SectionFeedback.jsx/css
-        │   ├── Suggestions.jsx/css
-        │   └── LoadingScreen.jsx/css
-        └── pages/
-            ├── Home.jsx/css
-            └── Results.jsx/css
+        ├── App.jsx               # Main Routing
+        ├── api.js                # Centralized API configuration
+        ├── components/           # Sidebar, AtsScore, KeywordCloud, etc.
+        └── pages/                # Home, Results, History, About
 ```
 
 ---
 
-## Run Locally
+## 🚀 Getting Started
 
-### 1. Start the Backend
+### 1. Prerequisites
+- Python 3.9+
+- Node.js 16+
 
-```powershell
+### 2. Backend Setup
+```bash
 cd backend
+python -m venv venv
+./venv/Scripts/activate  # Windows
+pip install -r requirements.txt
 python app.py
 ```
-Backend runs on: **http://localhost:5000**
 
-### 2. Start the Frontend
-
-```powershell
+### 3. Frontend Setup
+```bash
 cd frontend
+npm install
 npm run dev
 ```
-Frontend runs on: **http://localhost:5173**
+Open **http://localhost:5173** in your browser.
 
 ---
 
-## API Endpoints
+## 📊 Scoring Methodology
 
-| Method | Endpoint | Description |
-|--------|---------|-------------|
-| GET | `/api/health` | Health check |
-| POST | `/api/analyze` | Analyze resume PDF |
-| POST | `/api/export-report` | Download PDF report |
-
-### POST `/api/analyze`
-**Form data:**
-- `resume` – PDF file (required)
-- `jobDescription` – string (optional)
-
-**Response:**
-```json
-{
-  "ats_score": 72,
-  "score_breakdown": { "keyword_match": 28, "section_completeness": 24, "formatting": 20 },
-  "matched_keywords": ["Python", "REST API", "SQL"],
-  "missing_keywords": ["Docker", "Kubernetes"],
-  "sections": { "skills": { "present": true, "feedback": "..." }, ... },
-  "suggestions": ["Add more action verbs...", ...]
-}
-```
+| Metric | Weight | Description |
+| :--- | :--- | :--- |
+| **Keyword Match** | 50% | Comparison of resume terms (Unigrams/Bigrams) against Job Descriptions. |
+| **Sections** | 25% | Checks for Skills, Experience, Education, Projects, and Summary. |
+| **Formatting** | 25% | Analysis of bullet points, contact info, date formats, and action verbs. |
 
 ---
 
-## Scoring Logic
+## 👨‍💻 Developed By
 
-| Component | Weight | How |
-|-----------|--------|-----|
-| Keyword Match | 40% | `(matched_keywords / total_jd_keywords) × 40` |
-| Section Completeness | 30% | `(present_sections / 5) × 30` |
-| Formatting | 30% | Checks: word count, bullet points, email, phone, action verbs |
+**Amlor Anuj Kumar Gupta**  
+*Full Stack Developer & AI Enthusiast*
+
+- **LinkedIn:** [linkedin.com/in/anujgupta45](https://www.linkedin.com/in/anujgupta45/)
+- **Email:** guptaanuj730@gmail.com
+
+---
+
+## 📝 License
+This project is licensed under the MIT License - see the LICENSE file for details.
