@@ -52,10 +52,10 @@ export default function AtsScore({ score, breakdown }) {
         <div style={{ textAlign: 'center', minWidth: '160px' }}>
           <p className="text-muted" style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '8px' }}>ATS Score</p>
           <div style={{ position: 'relative', display: 'inline-block' }}>
-            <span style={{ fontSize: '4.5rem', fontWeight: '800', color: scoreColor, lineHeight: '1' }}>{displayed}</span>
+            <span style={{ fontSize: '4.5rem', fontWeight: '800', color: color, lineHeight: '1' }}>{displayed}</span>
             <span style={{ fontSize: '1.25rem', color: 'var(--text-muted)', fontWeight: '600', position: 'absolute', bottom: '12px', right: '-40px' }}>/100</span>
           </div>
-          <p style={{ marginTop: '12px', fontSize: '0.875rem', fontWeight: '600', color: scoreColor, textTransform: 'uppercase' }}>
+          <p style={{ marginTop: '12px', fontSize: '0.875rem', fontWeight: '600', color: color, textTransform: 'uppercase' }}>
             {getScoreLabel(score)}
           </p>
         </div>

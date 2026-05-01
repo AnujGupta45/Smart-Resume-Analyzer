@@ -54,7 +54,8 @@ export default function Results() {
 
   if (!data) return null
 
-  const scoreColor = data.ats_score >= 70 ? '#22c55e' : data.ats_score >= 50 ? '#f59e0b' : '#ef4444'
+  const ats_score = data.ats_score ?? 0
+  const scoreColor = ats_score >= 70 ? '#22c55e' : ats_score >= 50 ? '#f59e0b' : '#ef4444'
 
   return (
     <div className="animate-in">
@@ -85,7 +86,7 @@ export default function Results() {
       <div className="results-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '24px' }}>
         {/* Main Score & Breakdown */}
         <div style={{ gridColumn: 'span 8' }}>
-          <AtsScore score={data.ats_score} breakdown={data.score_breakdown} />
+          <AtsScore score={ats_score} breakdown={data?.score_breakdown} />
         </div>
 
         {/* Quick Tips / Small Summary */}
@@ -96,16 +97,16 @@ export default function Results() {
               <div>
                 <p className="text-muted" style={{ fontSize: '0.75rem', textTransform: 'uppercase' }}>Status</p>
                 <p style={{ color: scoreColor, fontWeight: '700', fontSize: '1.25rem' }}>
-                  {data.ats_score >= 80 ? 'Excellent' : data.ats_score >= 60 ? 'Strong' : 'Improvement Needed'}
+                  {ats_score >= 80 ? 'Excellent' : ats_score >= 60 ? 'Strong' : 'Improvement Needed'}
                 </p>
               </div>
               <div>
                 <p className="text-muted" style={{ fontSize: '0.75rem', textTransform: 'uppercase' }}>Word Count</p>
-                <p className="text-primary" style={{ fontWeight: '600' }}>{data.formatting_details?.word_count} words</p>
+                <p className="text-primary" style={{ fontWeight: '600' }}>{data.formatting_details?.word_count ?? 0} words</p>
               </div>
               <div style={{ padding: '12px', background: '#18181b', borderRadius: '8px', fontSize: '0.8125rem' }}>
                 <p className="text-secondary">
-                  {data.ats_score >= 70 
+                  {ats_score >= 70 
                     ? "Your resume has a strong chance of passing automated filters. Focus on the missing key phrases to reach 90+."
                     : "Focus on adding missing sections and increasing keyword density to improve your visibility."}
                 </p>
@@ -117,17 +118,17 @@ export default function Results() {
         {/* Keywords Analysis */}
         <div style={{ gridColumn: 'span 12' }}>
           <KeywordCloud
-            matched={data.matched_keywords}
-            missing={data.missing_keywords}
+            matched={data?.matched_keywords ?? []}
+            missing={data?.missing_keywords ?? []}
           />
         </div>
 
         {/* Suggestions & Sections */}
         <div style={{ gridColumn: 'span 7' }}>
-          <Suggestions suggestions={data.suggestions} />
+          <Suggestions suggestions={data?.suggestions ?? []} />
         </div>
         <div style={{ gridColumn: 'span 5' }}>
-          <SectionFeedback sections={data.sections} />
+          <SectionFeedback sections={data?.sections ?? {}} />
         </div>
 
         {/* Text Preview */}
