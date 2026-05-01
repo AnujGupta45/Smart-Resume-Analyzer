@@ -3,6 +3,7 @@ import Sidebar from './components/Sidebar'
 import Home from './pages/Home'
 import Results from './pages/Results'
 import About from './pages/About'
+import History from './pages/History'
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/results" element={<Results />} />
             <Route path="/about" element={<About />} />
+            <Route path="/history" element={<History />} />
           </Routes>
         </main>
       </div>

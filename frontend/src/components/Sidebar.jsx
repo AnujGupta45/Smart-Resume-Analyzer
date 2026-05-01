@@ -26,10 +26,10 @@ export default function Sidebar() {
             <span className="nav-icon">👤</span>
             <span>About Me</span>
           </NavLink>
-          <div className="nav-item disabled">
+          <NavLink to="/history" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
             <span className="nav-icon">📜</span>
             <span>History</span>
-          </div>
+          </NavLink>
         </div>
       </nav>
       

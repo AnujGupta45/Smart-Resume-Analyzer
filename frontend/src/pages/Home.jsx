@@ -28,9 +28,20 @@ export default function Home() {
         timeout: 30000,
       })
 
-      // Store result in sessionStorage and navigate
-      sessionStorage.setItem('analysisResult', JSON.stringify(data))
-      navigate('/results')
+      // Add to History
+      const historyItem = {
+        id: Date.now().toString(),
+        timestamp: new Date().toISOString(),
+        filename: file.name,
+        score: data.ats_score,
+        data: data
+      }
+      
+      const existingHistory = JSON.parse(localStorage.getItem('resumeHistory') || '[]')
+      localStorage.setItem('resumeHistory', JSON.stringify([historyItem, ...existingHistory]))
+
+      // Store result in navigate state instead of sessionStorage for cleaner results handling
+      navigate('/results', { state: { data } })
     } catch (err) {
       const msg = err.response?.data?.error || 'Analysis failed. Make sure the backend is running.'
       setError(msg)
