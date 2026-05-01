@@ -1,0 +1,126 @@
+.results-page { padding-bottom: 80px; }
+
+/* Header */
+.results-header {
+  background: rgba(15, 15, 45, 0.8);
+  border-bottom: 1px solid var(--border-light);
+  backdrop-filter: blur(20px);
+  padding: 40px 0 32px;
+  margin-bottom: 36px;
+}
+
+.results-header-inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.results-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+  margin-bottom: 6px;
+}
+
+.results-sub {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.results-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Score Banner */
+.score-banner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 24px;
+  border-radius: var(--radius-lg);
+  border: 1px solid;
+  flex-wrap: wrap;
+}
+
+.score-banner-icon { font-size: 2rem; flex-shrink: 0; }
+
+.score-banner-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.score-banner-val {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.score-banner-msg {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 480px;
+}
+
+/* Body Grid */
+.results-body { }
+
+.results-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.results-full { width: 100%; }
+
+/* Preview */
+.preview-card { padding: 28px 32px; }
+
+.preview-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: 'Outfit', sans-serif;
+  margin-bottom: 4px;
+}
+
+.preview-sub {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.preview-text {
+  font-family: 'Inter', monospace;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: rgba(0,0,0,0.2);
+  padding: 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-light);
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .results-title { font-size: 1.5rem; }
+  .score-banner { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .results-actions { width: 100%; }
+  .results-actions .btn { flex: 1; justify-content: center; }
+}

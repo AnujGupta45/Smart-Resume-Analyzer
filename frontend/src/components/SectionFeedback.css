@@ -1,0 +1,76 @@
+.section-feedback {
+  padding: 28px 32px;
+}
+
+.sf-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: 'Outfit', sans-serif;
+  margin-bottom: 4px;
+}
+
+.sf-sub {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.sf-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.sf-card {
+  padding: 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+  background: rgba(255, 255, 255, 0.03);
+  transition: var(--transition);
+}
+
+.sf-card:hover {
+  border-color: var(--border);
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-2px);
+}
+
+.sf-card.missing {
+  border-color: rgba(239, 68, 68, 0.15);
+}
+
+.sf-card.present {
+  border-color: rgba(34, 197, 94, 0.15);
+}
+
+.sf-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.sf-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.sf-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.sf-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: 'Outfit', sans-serif;
+}
+
+.sf-feedback {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
