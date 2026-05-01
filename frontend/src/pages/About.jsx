@@ -42,7 +42,7 @@ export default function About() {
 
               <div style={{ display: 'flex', gap: '12px' }}>
                 <a 
-                  href="https://www.linkedin.com/in/anujgupta45/" 
+                  href="https://linkedin.com/in/anujgupta45" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="btn btn-primary"
