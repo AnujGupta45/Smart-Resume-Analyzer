@@ -14,6 +14,7 @@ from collections import Counter
 # Download required NLTK data on first run
 def ensure_nltk_data():
     required = [
+        ("tokenizers/punkt", "punkt"),
         ("tokenizers/punkt_tab", "punkt_tab"),
         ("corpora/stopwords", "stopwords"),
     ]
@@ -21,6 +22,7 @@ def ensure_nltk_data():
         try:
             nltk.data.find(path)
         except (LookupError, OSError):
+            print(f"Downloading NLTK package: {package}")
             nltk.download(package, quiet=True)
 
 ensure_nltk_data()
