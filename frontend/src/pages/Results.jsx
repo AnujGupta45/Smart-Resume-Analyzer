@@ -11,7 +11,13 @@ import './Results.css'
 export default function Results() {
   const location = useLocation()
   const navigate = useNavigate()
-  const data = location.state?.data
+  
+  // Try state first, then fallback to sessionStorage
+  const [data] = useState(() => {
+    if (location.state?.data) return location.state.data
+    const saved = sessionStorage.getItem('analysisResult')
+    return saved ? JSON.parse(saved) : null
+  })
   const [exporting, setExporting] = useState(false)
 
   if (!data) {

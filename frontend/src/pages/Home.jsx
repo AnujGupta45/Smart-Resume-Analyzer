@@ -40,7 +40,8 @@ export default function Home() {
       const existingHistory = JSON.parse(localStorage.getItem('resumeHistory') || '[]')
       localStorage.setItem('resumeHistory', JSON.stringify([historyItem, ...existingHistory]))
 
-      // Store result in navigate state instead of sessionStorage for cleaner results handling
+      // Store result in both state and sessionStorage for maximum reliability
+      sessionStorage.setItem('analysisResult', JSON.stringify(data))
       navigate('/results', { state: { data } })
     } catch (err) {
       const msg = err.response?.data?.error || 'Analysis failed. Make sure the backend is running.'
